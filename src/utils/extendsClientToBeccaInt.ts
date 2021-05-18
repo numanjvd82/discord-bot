@@ -62,6 +62,9 @@ async function setSetting(
       const index = server.hearts.indexOf(value.replace(/\D/g, ""));
       server.hearts.splice(index, 1);
       server.markModified("hearts");
+    } else if (value === "reset") {
+      server.hearts = [];
+      server.markModified("hearts");
     } else {
       server.hearts.push(value.replace(/\D/g, ""));
       server.markModified("hearts");
@@ -71,6 +74,9 @@ async function setSetting(
       const index = server.blocked.indexOf(value.replace(/\D/g, ""));
       server.blocked.splice(index, 1);
       server.markModified("blocked");
+    } else if (value === "reset") {
+      server.blocked = [];
+      server.markModified("blocked");
     } else {
       server.blocked.push(value.replace(/\D/g, ""));
       server.markModified("blocked");
@@ -79,6 +85,9 @@ async function setSetting(
     if (server.self_roles.includes(value.replace(/\D/g, ""))) {
       const index = server.self_roles.indexOf(value.replace(/\D/g, ""));
       server.self_roles.splice(index, 1);
+      server.markModified("self_roles");
+    } else if (value === "reset") {
+      server.self_roles = [];
       server.markModified("self_roles");
     } else {
       server.self_roles.push(value.replace(/\D/g, ""));
